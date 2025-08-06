@@ -30,7 +30,11 @@ public class DataSource {
             new Employee("Quinn", "IT", 87000),
             new Employee("Rita", "HR", 70000),
             new Employee("Sam", "Marketing", 64000),
-            new Employee("Tom", "IT", 92000)
+            new Employee("Tom", "IT", 92000),
+            new Employee("Uma", "IT", 105000),
+            new Employee("Victor", "Finance", 120000),
+            new Employee("Wendy", "Marketing", 110000),
+            new Employee("Xavier", "HR", 115000)
     );
 
 
