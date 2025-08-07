@@ -1,6 +1,9 @@
 package com.example.method_ref;
 
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 import java.util.function.*;
 
@@ -30,16 +33,24 @@ public class Test {
         instance (receiver) on which to call the method.*/
 
 
-        IUpperCase2 demo = Test::toUC;
 
         Consumer<String> printer = System.out::println;
         printer.accept("print something");
 
         BiConsumer<PrintStream, String> publisher = PrintStream::println;
         publisher.accept(System.out,"hello world");
+//        publisher.accept(new PrintStream(System.out),"hello world");
 
-    }
-    public String toUC(String s){
-        return s.toUpperCase();
-    }
+        BiFunction<List<String>,String,Boolean > listAdder = List::add;
+        ArrayList<String> list = new ArrayList<>();
+        listAdder.apply(list,"element 1");
+        listAdder.apply(list,"element 2");
+        listAdder.apply(list,"element 3");
+        list.forEach(System.out::println);
+
+        BiFunction<ArrayList<String>,String,Boolean> arrayListAdder = ArrayList::add;
+        BiConsumer<ArrayList<String >,String> noNeedOfReturnValue = ArrayList::add;
+
+        }
+
 }
