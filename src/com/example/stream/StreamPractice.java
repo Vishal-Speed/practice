@@ -165,6 +165,7 @@ public class StreamPractice {
      */
     private static void sumOfSalaries() {
         // TODO
+        Function<Employee,Double> function = Employee::getSalary;
         double sum = employees.stream().map(Employee::getSalary).mapToDouble(Double::doubleValue).sum();
         System.out.println(sum);
     }

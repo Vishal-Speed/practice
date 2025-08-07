@@ -25,6 +25,10 @@ public class Test {
         Function<String,String> func = String::toUpperCase;
         String apply1 = func.apply("abc");
         System.out.println(apply1);
+/*
+        When you use an instance method reference like ClassName::instanceMethod,
+        the first parameter of your functional interface is treated as the
+        instance (receiver) on which to call the method.*/
 
 
     }
