@@ -1,6 +1,8 @@
 package com.example.method_ref;
 
+import java.io.PrintStream;
 import java.util.Locale;
+import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -31,5 +33,12 @@ public class Test {
         instance (receiver) on which to call the method.*/
 
 
+        IUpperCase2 demo = Test::toUC;
+
+        BiConsumer<PrintStream,char[]> printer = PrintStream::println;
+        printer.accept(System.out,"Hello world".toCharArray());
+    }
+    public String toUC(String s){
+        return s.toUpperCase();
     }
 }
