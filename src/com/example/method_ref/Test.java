@@ -2,9 +2,7 @@ package com.example.method_ref;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 import java.util.function.*;
 
 public class Test {
@@ -54,6 +52,19 @@ public class Test {
 //        since there is no need to match return type in method ref we can use BiConsumer here
         TriFunction<Test,Integer,Integer,Integer> adder = Test::add;
         System.out.println(adder.apply(new Test(),5,10));
+
+        Function<Integer,Employee> id =  Employee::new;
+        Employee e1 = id.apply(10);
+        System.out.println(e1);
+
+        BiFunction<Integer,String,Employee> idName = Employee::new;
+        Employee vishal = idName.apply(20, "Vishal");
+        System.out.println(vishal);
+
+        TriFunction<Integer,String,String,Employee> idNameDepartment = Employee::new;
+        Employee rohit = idNameDepartment.apply(30, "Rohit", "Sales");
+        System.out.println(rohit);
+
     }
 
     int add(int a,int b){
