@@ -13,7 +13,7 @@ public class Test {
         String converted = converter.convertStringToUpperCase("hello world");
         System.out.println(converted);
 
-        BiFunction<String,String,String> concatter = String::concat;
+        BiFunction<String, String, String> concatter = String::concat;
         String apply = concatter.apply("hello ", "world");
         System.out.println(apply);
 
@@ -24,7 +24,7 @@ public class Test {
         System.out.println(s);
 
 
-        Function<String,String> func = String::toUpperCase;
+        Function<String, String> func = String::toUpperCase;
         String apply1 = func.apply("abc");
         System.out.println(apply1);
 /*
@@ -33,24 +33,34 @@ public class Test {
         instance (receiver) on which to call the method.*/
 
 
-
         Consumer<String> printer = System.out::println;
         printer.accept("print something");
 
         BiConsumer<PrintStream, String> publisher = PrintStream::println;
-        publisher.accept(System.out,"hello world");
+        publisher.accept(System.out, "hello world");
 //        publisher.accept(new PrintStream(System.out),"hello world");
 
-        BiFunction<List<String>,String,Boolean > listAdder = List::add;
+        BiFunction<List<String>, String, Boolean> listAdder = List::add;
         ArrayList<String> list = new ArrayList<>();
-        listAdder.apply(list,"element 1");
-        listAdder.apply(list,"element 2");
-        listAdder.apply(list,"element 3");
+        listAdder.apply(list, "element 1");
+        listAdder.apply(list, "element 2");
+        listAdder.apply(list, "element 3");
         list.forEach(System.out::println);
 
-        BiFunction<ArrayList<String>,String,Boolean> arrayListAdder = ArrayList::add;
-        BiConsumer<ArrayList<String >,String> noNeedOfReturnValue = ArrayList::add;
+        BiFunction<ArrayList<String>, String, Boolean> arrayListAdder = ArrayList::add;
+        BiConsumer<ArrayList<String>, String> noNeedOfReturnValue = ArrayList::add;
+        BiPredicate<ArrayList<String>, String> arrayListEBooleanBiFunction = ArrayList::add;
+//        BIConsumer's accept method matched argument wise
+//        since there is no need to match return type in method ref we can use BiConsumer here
+        TriFunction<Test,Integer,Integer,Integer> adder = Test::add;
+        System.out.println(adder.apply(new Test(),5,10));
+    }
 
-        }
+    int add(int a,int b){
+        return a+b;
+    }
+}
 
+interface TriFunction<A,B,C,R>{
+    R apply(A a,B b,C c);
 }
