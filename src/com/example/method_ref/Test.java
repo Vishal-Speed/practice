@@ -2,10 +2,7 @@ package com.example.method_ref;
 
 import java.io.PrintStream;
 import java.util.Locale;
-import java.util.function.BiConsumer;
-import java.util.function.BiFunction;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import java.util.function.*;
 
 public class Test {
     public static void main(String[] args) {
@@ -35,8 +32,12 @@ public class Test {
 
         IUpperCase2 demo = Test::toUC;
 
-        BiConsumer<PrintStream,char[]> printer = PrintStream::println;
-        printer.accept(System.out,"Hello world".toCharArray());
+        Consumer<String> printer = System.out::println;
+        printer.accept("print something");
+
+        BiConsumer<PrintStream, String> publisher = PrintStream::println;
+        publisher.accept(System.out,"hello world");
+
     }
     public String toUC(String s){
         return s.toUpperCase();
