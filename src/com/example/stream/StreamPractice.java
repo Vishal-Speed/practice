@@ -28,9 +28,9 @@ public class StreamPractice {
 //         averageSalaryByDept();
 //         employeesBySalaryRange();
 //         distinctDepartments();
-         sumOfSalaries();
+//         sumOfSalaries();
 //         medianSalary();
-        // findEmployeeByName("Alice");
+         findEmployeeByName("1");
         // flattenNestedLists();
         // mapToIdNameMap();
         // salaryHistogram();
@@ -185,6 +185,8 @@ public class StreamPractice {
      */
     private static void findEmployeeByName(String name) {
         // TODO
+        Optional<Employee> optional = employees.stream().filter(employee -> employee.getName().equalsIgnoreCase(name)).findFirst();
+        optional.ifPresentOrElse(System.out::println,()-> System.out.println("No match found"));
     }
 
     /**
@@ -204,6 +206,7 @@ public class StreamPractice {
      */
     private static void mapToIdNameMap() {
         // TODO
+
     }
 
     /**
