@@ -30,7 +30,7 @@ public class StreamPractice {
 //         distinctDepartments();
 //         sumOfSalaries();
 //         medianSalary();
-         findEmployeeByName("1");
+//         findEmployeeByName("1");
         // flattenNestedLists();
         // mapToIdNameMap();
         // salaryHistogram();
@@ -42,6 +42,9 @@ public class StreamPractice {
         Consumer<String> printString = System.out::println;
 
         printString.accept("hello world");*/
+
+        employees.stream().collect(Collectors.groupingBy(Employee::getDepartment,Collectors.summingDouble(Employee::getSalary))).forEach((dept,count)-> System.out.println(dept+": "+count));
+        Map<String, Double> collect = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment, Collectors.summingDouble(Employee::getSalary)));
     }
 
     //  Basic
@@ -95,7 +98,7 @@ public class StreamPractice {
         Map<String, Long> collect = Arrays.stream(split)
                 .map(s -> s == null ? null : s.trim().toLowerCase())
                 .filter(Objects::nonNull)
-                .collect(Collectors.groupingBy(s -> s, Collectors.counting()));
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 //        collect.forEach((word,count)-> System.out.println(word+": "+count));
     }
     private static void processCSVTransactions() {
