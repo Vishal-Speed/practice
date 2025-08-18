@@ -32,6 +32,20 @@ class Person {
 }
 public class ManualFlatMap {
     public static void main(String[] args) {
+        List<Person> people = buildPeople();
+//        people.stream().flatMap(person -> person.getNumbers().stream()).forEach(System.out::println);
+
+        Function<Person, List<Integer>> getNumbers = Person::getNumbers;
+        List<List<Integer>> integerList = ManualMapMethod.map(people, getNumbers);
+//        System.out.println(integerList);
+
+        List<Integer> list = ManualMapMethod.flatMap(people, getNumbers);
+        System.out.println(list);
+
+    }
+
+
+    private static List<Person> buildPeople() {
         List<Person> people = new ArrayList<>();
 
         // create Person references
@@ -47,20 +61,8 @@ public class ManualFlatMap {
         people.add(charlie);
         people.add(david);
         people.add(john);
-//        people.stream().flatMap(person -> person.getNumbers().stream()).forEach(System.out::println);
 
-        Function<Person, List<Integer>> getNumbers = new Function<Person, List<Integer>>() {
-            @Override
-            public List<Integer> apply(Person person) {
-                return person.getNumbers();
-            }
-        };
-        List<List<Integer>> integerList = ManualMapMethod.map(people, getNumbers);
-//        System.out.println(integerList);
-
-        List<Integer> list = ManualMapMethod.flatMap(people, getNumbers);
-        System.out.println(list);
-
+        return people;
     }
 
 
