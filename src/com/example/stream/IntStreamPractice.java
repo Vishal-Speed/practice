@@ -7,18 +7,7 @@ import java.util.function.Function;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-class Student {
 
-    private final List<String> hobbies;
-
-    public Student(List<String> hobbies) {
-        this.hobbies = List.copyOf(hobbies);
-    }
-
-    public List<String> getHobbies() {
-        return hobbies;
-    }
-}
 public class IntStreamPractice {
     public static void main(String[] args) {
 
@@ -61,14 +50,6 @@ public class IntStreamPractice {
         Integer[] integerArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         Stream<Integer> stream1 = Arrays.stream(integerArray);
 
-
-//        ArrayList<String> hobbies = new ArrayList<>();
-//        hobbies.add("watching sitcoms");
-//        hobbies.add("playing cricket");
-//
-//        Student student = new Student(hobbies);
-//        student.getHobbies().stream().map(String::toUpperCase).forEach(System.out::println);
-//        student.getHobbies().add("aaa");
 
 
 

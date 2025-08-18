@@ -37,6 +37,29 @@ public class DataSource {
             new Employee("Xavier", "HR", 115000)
     );
 
+    public static List<Student> students = Arrays.asList(
+            new Student(1, "Vishal", 9879879319L, 22),
+            new Student(2, "Rahul", 9033858689L, 21),
+            new Student(3, "Rohit", 7889879895L, 23),
+            new Student(4, "Amit", 9123456789L, 20),
+            new Student(5, "Sneha", 9988776655L, 22),
+            new Student(6, "Priya", 9765432109L, 19),
+            new Student(7, "Arjun", 8877665544L, 24),
+            new Student(8, "Kiran", 9090909090L, 21),
+            new Student(9, "Meera", 9812345678L, 20),
+            new Student(10, "Suresh", 9345678901L, 23),
+            new Student(11, "Anita", 9123987654L, 22),
+            new Student(12, "Deepak", 9834567890L, 21),
+            new Student(13, "Lakshmi", 9988123456L, 24),
+            new Student(14, "Manoj", 9753124680L, 19),
+            new Student(15, "Neha", 9876501234L, 22),
+            new Student(16, "Ravi", 9345012345L, 20),
+            new Student(17, "Sunita", 9012345678L, 21),
+            new Student(18, "Tarun", 9191919191L, 23),
+            new Student(19, "Varun", 9222333444L, 24),
+            new Student(20, "Zoya", 9888777666L, 20)
+    );
+
 
     // 🔴 For word frequency counter
     public static String largeText = """
@@ -88,6 +111,62 @@ public class DataSource {
         @Override
         public String toString() {
             return name + " (" + department + ") - $" + salary;
+        }
+    }
+
+    public static class Student {
+        private int id;
+        private String name;
+        private Long mobile;
+        private int age;
+
+        public Student(int id, String name, Long mobile, int age) {
+            this.id = id;
+            this.name = name;
+            this.mobile = mobile;
+            this.age = age;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public Long getMobile() {
+            return mobile;
+        }
+
+        public void setMobile(Long mobile) {
+            this.mobile = mobile;
+        }
+
+        public int getAge() {
+            return age;
+        }
+
+        public void setAge(int age) {
+            this.age = age;
+        }
+
+        @Override
+        public String toString() {
+            return "Student{" +
+                    "id=" + id +
+                    ", name='" + name + '\'' +
+                    ", mobile=" + mobile +
+                    ", age=" + age +
+                    '}';
         }
     }
 }
