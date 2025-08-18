@@ -73,7 +73,7 @@ public class StreamPractice2 {
 
 //        cricketers.stream().map(c->c.name().split(" ")[0]).forEach(System.out::println);
 
-
+        cricketers.stream().map(Cricketer::teams).flatMap(List::stream).distinct().forEach(System.out::println);
 
 
 

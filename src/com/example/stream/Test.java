@@ -22,8 +22,7 @@ public class Test {
         }*/
 
 //        sequentialTask2();
-//        parallelTask();
-
+        parallelTask();
         long reduce1 = LongStream.rangeClosed(0, 8).parallel().reduce(0, (a, b) -> a + b);
         System.out.println(reduce1);
     }

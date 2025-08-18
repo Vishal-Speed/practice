@@ -201,6 +201,7 @@ public class StreamPractice {
      */
     private static void flattenNestedLists() {
         // TODO
+
     }
 
     /**
