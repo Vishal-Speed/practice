@@ -20,6 +20,12 @@ public class FlatMapMethodDemo {
 
 //        System.out.println(stringStream3.toList());
 
+        List<Person> people = Person.buildPeople();
+        List<Integer> phones = people.stream().flatMap(person -> person.getNumbers().stream()).toList();
+        System.out.println(phones);
+
+//        people.stream().flatMap()
+
     }
 
     private static List<String> getStringList(){
