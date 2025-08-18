@@ -12,11 +12,13 @@ public class FlatMapMethodDemo {
 //        Stream<String> stringStream = stringList.stream().flatMap(string -> Arrays.asList(string.split(" ")).stream());
         Stream<String> stringStream = stringList.stream().flatMap(string -> Stream.of(string.split(" ")));
         List<String> list = stringStream.toList();
-        System.out.println(list);
+//        System.out.println(list);
 
         Stream<String> stringStream1 = flatMap(stringList, string -> Arrays.asList(string.split(" ")).stream());
         Stream<String> stringStream2 = flatMap(stringList, string -> Stream.of(string.split(" ")));
+        Stream<String> stringStream3 = flatMap(stringList, string -> Arrays.stream(string.split(" ")));
 
+//        System.out.println(stringStream3.toList());
 
     }
 
