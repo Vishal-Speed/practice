@@ -21,6 +21,8 @@ public class Test {
     public static void main(String[] args) {
         Aquarium<? extends Fish> aquarium = new Aquarium<>(new Starfish());
 //        aquarium.printFish();
-
+        Box<Integer> box = new Box<>(10);
+        box.setValue(20);
+        System.out.println(box.getValue().getClass().getName());
     }
 }
