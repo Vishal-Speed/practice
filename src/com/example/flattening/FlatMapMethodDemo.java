@@ -3,7 +3,9 @@ package com.example.flattening;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class FlatMapMethodDemo {
@@ -24,11 +26,24 @@ public class FlatMapMethodDemo {
         List<Integer> phones = people.stream().flatMap(person -> person.getNumbers().stream()).toList();
         System.out.println(phones);
 
-//        people.stream().flatMap()
+        List<Integer> list1 = people.stream().flatMap(person -> person.getNickNames().stream()).map(string -> string.length()).toList();
+        System.out.println(list1);
 
+        //count nickname of each person
+        Map<String, Integer> map = people.stream().collect(Collectors.toMap(Person::getName, person -> person.getNickNames().size()));
+        System.out.println(map);
+
+
+        Map<String, List<Integer>> collect = people.stream().collect(
+                Collectors.toMap(
+                        Person::getName,
+                        person -> person.getNickNames().stream().map(String::length).toList()
+                )
+        );
+        System.out.println(collect);
     }
 
-    private static List<String> getStringList(){
+    private static List<String> getStringList() {
         List<String> list = new ArrayList<>();
         list.add("hello world");
         list.add("java programming language");
@@ -43,11 +58,11 @@ public class FlatMapMethodDemo {
         return list;
     }
 
-    static <T,R> Stream<R> flatMap(List<T> list, Function<T,Stream<R>> function){
+    static <T, R> Stream<R> flatMap(List<T> list, Function<T, Stream<R>> function) {
         Stream<R> result = Stream.empty();
-        for(T element : list){
+        for (T element : list) {
             Stream<R> apply = function.apply(element);
-            result = Stream.concat(result,apply);
+            result = Stream.concat(result, apply);
         }
         return result;
     }
