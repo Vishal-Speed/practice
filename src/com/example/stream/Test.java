@@ -3,7 +3,6 @@ package com.example.stream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.OptionalLong;
 import java.util.stream.LongStream;
 
 public class Test {
@@ -22,23 +21,37 @@ public class Test {
         }*/
 
 //        sequentialTask2();
-        parallelTask();
         long reduce1 = LongStream.rangeClosed(0, 8).parallel().reduce(0, (a, b) -> a + b);
-        System.out.println(reduce1);
+//        System.out.println(reduce1);
+        parallelTask();
+        System.out.println("JVM cached-----------------------");
+        System.out.println("For Loop:");
+        sumUsingForLoop();
+        System.out.println("Using parallel stream:");
+        parallelTask();
+        System.out.println("Using sequential stream:");
+        sequentialTask();
+
     }
-    public static void parallelTask(){
+
+    public static void parallelTask() {
         long start = System.currentTimeMillis();
-        long sum = LongStream.rangeClosed(1, 1_000_000_000).parallel().sum();
-        System.out.println("Time taken: "+(System.currentTimeMillis()-start));
+        long sum = LongStream.rangeClosed(1, 9_000_000_000L).parallel().sum();
+        System.out.println("Time taken: " + (System.currentTimeMillis() - start));
     }
-    public static void sequentialTask(){
+
+    public static void sumUsingForLoop() {
         long start = System.currentTimeMillis();
-        long sum = LongStream.rangeClosed(1, 1_000_000_000).sum();
-        System.out.println("Time taken: "+(System.currentTimeMillis()-start));
+        long sum = 0;
+        for (long i = 1; i <= 9_000_000_000L; i++) {
+            sum += i;
+        }
+        System.out.println("Time taken: " + (System.currentTimeMillis() - start));
     }
-    public static void sequentialTask2(){
+
+    public static void sequentialTask() {
         long start = System.currentTimeMillis();
-        long sum = LongStream.rangeClosed(1, 2_000_000_000).sum();
-        System.out.println("Time taken: "+(System.currentTimeMillis()-start));
+        long sum = LongStream.rangeClosed(1, 9_000_000_000L).sum();
+        System.out.println("Time taken: " + (System.currentTimeMillis() - start));
     }
 }

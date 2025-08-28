@@ -21,8 +21,17 @@ public class Test {
     public static void main(String[] args) {
         Aquarium<? extends Fish> aquarium = new Aquarium<>(new Starfish());
 //        aquarium.printFish();
-        Box<Integer> box = new Box<>(10);
-        box.setValue(20);
-        System.out.println(box.getValue().getClass().getName());
+        Box<Integer> box1 = new Box<>(10);
+        box1.setValue(20);
+
+
+
+
+
+        /*Box<String> box3 = new Box<>("vishal");
+        Box anotherBox = box3;
+        anotherBox.setValue(10);
+        System.out.println(anotherBox.getValue());*/
+//        System.out.println(box.getValue().getClass().getName());
     }
 }
