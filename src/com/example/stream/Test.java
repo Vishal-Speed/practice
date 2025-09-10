@@ -14,8 +14,8 @@ public class Test {
         /*for (int i = 1; i <= 5; i++) {
             list.clear();
             Stream.iterate(1, integer -> integer <= 20, integer -> integer + 1)
-                    .parallel().
-                    forEachOrdered(list::add);
+                    .parallel()
+                    .forEachOrdered(list::add);
             System.out.println(list);
             System.out.println("Size: "+list.size());
         }*/
